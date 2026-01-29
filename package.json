@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "format": "prettier --write \"./src\"",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+     "postinstall": "prisma generate"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
