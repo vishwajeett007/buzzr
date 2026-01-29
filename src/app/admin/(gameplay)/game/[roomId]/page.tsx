@@ -3,6 +3,10 @@ import GameLobby from "@/components/Admin/Game/GameLobby";
 import { prisma } from "@/utils/prisma";
 import { redirect } from "next/navigation";
 
+// This route depends on request-time data (auth + database),
+// so we always render it dynamically and avoid build-time prerendering.
+export const dynamic = "force-dynamic";
+
 const page = async ({ params }: { params: { roomId: string } }) => {
   const session = await auth();
 

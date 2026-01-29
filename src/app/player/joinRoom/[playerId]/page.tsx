@@ -4,6 +4,9 @@ import ResetReduxStates from "@/components/Player/ResetReduxStates";
 import JoinRoomForm from "@/components/Player/Setup/JoinRoomForm";
 import ClientImage from "@/components/ClientImage";
 
+// Join room page mutates player state and depends on live data; render dynamically.
+export const dynamic = "force-dynamic";
+
 async function JoinRoom({ params }: { params: { playerId: string } }) {
   const player = await prisma.player.findUnique({
     where: {
