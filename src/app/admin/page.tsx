@@ -5,6 +5,10 @@ import GridListToggle from "@/components/Admin/GridListToggle";
 import Buzzrs from "@/components/Admin/Home/Buzzrs";
 import LoaderBuzzrs from "@/components/Admin/Home/LoaderBuzzrs";
 
+// Admin dashboard uses client-side session and dynamic content;
+// mark as dynamic to avoid static data collection during build.
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <div className="flex">
