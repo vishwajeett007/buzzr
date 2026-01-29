@@ -23,10 +23,10 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/Admin/Game/Question/QuesComp.tsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "buzzr-server-main"]
 }
