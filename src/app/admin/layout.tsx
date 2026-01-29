@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   description: "Buzzr Admin Panel",
 };
 
+// Admin routes require auth; ensure they render dynamically at request time.
+export const dynamic = "force-dynamic";
+
 export default async function RootLayout({
   children,
 }: Readonly<{
