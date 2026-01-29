@@ -1,6 +1,10 @@
 import NavbarToggle from "@/components/Admin/NavbarToggle";
 import Navbar from "@/components/Admin/Navbar";
 
+// Explicitly mark settings as dynamic to stop Vercel
+// from trying to statically collect page data at build time.
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
   return (
     <div className="flex">
