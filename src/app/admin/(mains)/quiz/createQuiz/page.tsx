@@ -6,9 +6,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
-
-export const dynamic = "force-dynamic";
-
 export default function CreateQuiz() {
   const profiles = [
     { image: "/images/player_profile/profile1.png", name: "LesgooVroomVroom" },

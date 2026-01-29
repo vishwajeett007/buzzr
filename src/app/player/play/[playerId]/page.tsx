@@ -4,9 +4,6 @@ import { GameSession } from "@prisma/client";
 import ValidatePlayer from "@/components/Player/ValidatePlayer";
 import ClientImage from "@/components/ClientImage";
 
-// Player game view depends on live game session and player state; render dynamically.
-export const dynamic = "force-dynamic";
-
 const page = async ({ params }: { params: { playerId: string } }) => {
   const player = await prisma.player.findUnique({
     where: { id: params.playerId },

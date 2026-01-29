@@ -3,24 +3,28 @@ import SetLocalItem from "@/components/Player/setLocalItem";
 import ResetReduxStates from "@/components/Player/ResetReduxStates";
 import JoinRoomForm from "@/components/Player/Setup/JoinRoomForm";
 import ClientImage from "@/components/ClientImage";
+import { redirect } from "next/navigation";
 
-// Join room page mutates player state and depends on live data; render dynamically.
-export const dynamic = "force-dynamic";
+async function JoinRoom({ params }: { params: { playerId?: string } }) {
+  // Guard against undefined or malformed playerId to avoid Prisma validation errors
+  const playerId = params.playerId;
+  if (!playerId) {
+    redirect("/player");
+  }
 
-async function JoinRoom({ params }: { params: { playerId: string } }) {
   const player = await prisma.player.findUnique({
     where: {
-      id: params.playerId,
+      id: playerId,
     },
   });
 
   if (!player) {
-    throw new Error("Player not found");
+    redirect("/player");
   }
 
   if (player?.gameId) {
     await prisma.player.update({
-      where: { id: params.playerId },
+      where: { id: playerId },
       data: {
         gameId: null,
       },
@@ -28,7 +32,7 @@ async function JoinRoom({ params }: { params: { playerId: string } }) {
   }
   return (
     <>
-      <SetLocalItem mapKey="playerId" value={params.playerId} />
+      <SetLocalItem mapKey="playerId" value={playerId} />
       <ResetReduxStates />
       <div className="p-4 flex justify-between">
         <ClientImage
@@ -43,7 +47,7 @@ async function JoinRoom({ params }: { params: { playerId: string } }) {
       </div>
       <div className="w-full h-[81vh] flex gap-4 px-4 [&>*]:bg-white dark:[&>*]:bg-dark [&>*]:rounded-xl">
         <div className="w-full md:w-fit py-4">
-          <JoinRoomForm playerId={params.playerId} />
+          <JoinRoomForm playerId={playerId} />
         </div>
         <div className="w-[40vw] hidden md:block"></div>
       </div>

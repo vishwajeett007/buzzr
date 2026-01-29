@@ -6,10 +6,6 @@ import Image from "next/image";
 import { useState } from "react";
 import BackNavButton from "@/components/BackNavButton";
 
-// Player entry uses only client-side state, but we still
-// mark it dynamic to keep all routes consistent for deployment.
-export const dynamic = "force-dynamic";
-
 function Player() {
   const [data, setData] = useState({
     name: "",

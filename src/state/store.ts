@@ -36,6 +36,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
+  // redux-persist dispatches non-serializable actions (e.g. functions in `register`),
+  // so we disable serializableCheck to avoid noisy console warnings.
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export const persistor = persistStore(store);

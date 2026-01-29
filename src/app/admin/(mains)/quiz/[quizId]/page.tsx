@@ -9,9 +9,6 @@ import SubmitButton from "@/components/SubmitButton";
 import createRoom from "@/actions/CreateRoomAction";
 import HideQuestions from "@/components/Admin/Quiz/HideQuestions";
 
-// Requires authenticated user and live quiz data; render dynamically.
-export const dynamic = "force-dynamic";
-
 async function Quiz({ params }: { params: { quizId: string } }) {
   const session = await auth();
 

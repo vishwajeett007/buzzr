@@ -1,10 +1,6 @@
 import Link from "next/link";
 import ClientImage from "@/components/ClientImage";
 
-// Mark landing page as dynamic to align with the rest of the app's
-// deployment strategy and avoid static data collection issues.
-export const dynamic = "force-dynamic";
-
 export default function Home() {
   return (
     <>

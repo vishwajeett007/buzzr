@@ -158,7 +158,7 @@ function Barchart(params: { result: number[]; options: Option[] }) {
             series={[{ data: uData, label: "", type: "bar" }]}
             xAxis={[{ scaleType: "band", data: xLabels }]}
           >
-            <BarPlot className="barplot" />
+            <BarPlot />
           </ChartContainer>
         </div>
 

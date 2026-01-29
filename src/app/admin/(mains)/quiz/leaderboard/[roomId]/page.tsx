@@ -3,9 +3,6 @@ import { prisma } from "@/utils/prisma";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-// Leaderboard depends on live game results; render dynamically.
-export const dynamic = "force-dynamic";
-
 export default async function QuizLeaderboard({
   params,
 }: {

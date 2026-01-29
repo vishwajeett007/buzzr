@@ -12,8 +12,11 @@ const rateLimit = new Ratelimit({
 const createPlayer = async (formData: FormData) => {
   try {
     if (process.env.RATELIMIT === "ON") {
-      const ip = headers().get("x-forwarded-for");
-      const { remaining, limit, success } = await rateLimit.limit(ip as string);
+      const ip =
+        (await headers()).get("x-forwarded-for") ??
+        (await headers()).get("x-real-ip") ??
+        "unknown";
+      const { remaining, limit, success } = await rateLimit.limit(ip);
 
       if (!success) {
         throw new Error("Rate limit reached wait for some time and try again.");

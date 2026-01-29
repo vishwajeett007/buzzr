@@ -1,10 +1,6 @@
 import SplitWrapper from "@/components/Auth/SplitWrapper";
 import LoginForm from "@/components/Auth/LoginForm";
 
-// Login page is purely client-side, but we mark it dynamic
-// to prevent any static data collection issues during build.
-export const dynamic = "force-dynamic";
-
 const LoginPage = () => {
   return (
     <>

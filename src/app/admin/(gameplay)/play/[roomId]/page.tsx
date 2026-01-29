@@ -3,9 +3,6 @@ import { auth } from "@/utils/auth";
 import { redirect } from "next/navigation";
 import Lobby from "@/components/Admin/Lobby";
 
-// Requires authenticated user and live game session data; render dynamically.
-export const dynamic = "force-dynamic";
-
 async function Play({ params }: { params: { roomId: string } }) {
   const session = await auth();
 
